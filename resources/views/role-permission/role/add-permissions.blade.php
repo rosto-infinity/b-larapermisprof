@@ -12,7 +12,7 @@
             <div class="bg-gray-200 px-4 py-2">
               <h4 class="font-bold text-lg flex items-center justify-between">
                 Role : {{ $role->name }}
-                {{-- Lien pour retourner à la liste des rôles --}}
+                {{-- -Lien pour retourner à la liste des rôles --}}
                 <a href="{{ url('roles') }}" class="bg-red-500 text-white px-4 py-1 rounded">Back</a>
               </h4>
             </div>
