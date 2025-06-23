@@ -23,7 +23,7 @@
                 @method('PATCH') {{-- Spécifie que la méthode HTTP est PUT pour la mise à jour --}}
                 
                 <div class="mb-3">
-                  {{-- Affichage des erreurs de validation pour les permissions --}}
+                  {{-- -Affichage des erreurs de validation pour les permissions --}}
                   @error('permission')
                     <div class="text-red-500">{{ $message }}</div>                               
                   @enderror
