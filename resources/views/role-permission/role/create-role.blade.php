@@ -3,7 +3,7 @@
   <div class="container mx-auto mt-6">
     <div class="row">
       <div class="col-md-12">
-        {{-- Affichage des erreurs de validation, le cas échéant --}}
+        {{-- -Affichage des erreurs de validation, le cas échéant --}}
         @if ($errors->any())
           <ul class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded relative" role="alert">
             @foreach ($errors->all() as $error)
