@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 
@@ -13,8 +12,9 @@ class PermissionController extends Controller
      */
     public function index(Request $request)
     {
-       
+
         $permissions = Permission::all();
+
         return view('role-permission.permission.index-permission', compact('permissions'));
     }
 
@@ -42,7 +42,7 @@ class PermissionController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect('permissions')->with('status', 'Permission Created Successfully');
+        return redirect('permissions')->with('success', 'Permission Created Successfully');
     }
 
     /**
@@ -58,7 +58,7 @@ class PermissionController extends Controller
      */
     public function edit(Permission $permission)
     {
-       
+
         return view('role-permission.permission.edit-permission', compact('permission'));
     }
 
@@ -78,16 +78,17 @@ class PermissionController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect('permissions')->with('status', 'Permission Updated Successfully');
+        return redirect('permissions')->with('success', 'Permission Updated Successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($permissionId)
+    public function destroy($permission)
     {
-        $permission = Permission::find($permissionId);
+        $permission = Permission::find($permission);
         $permission->delete();
-        return redirect('permissions')->with('status','Permission Deleted Successfully');
+
+        return redirect('permissions')->with('error', 'Permission Deleted Successfully');
     }
 }

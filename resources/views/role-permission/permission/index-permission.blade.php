@@ -1,10 +1,7 @@
 <x-app-layout>
-    <div class="container mx-auto mt-5">
-        <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded mx-1">Roles</a>
-        <a href="#" class="bg-teal-500 text-white px-4 py-2 rounded mx-1">Permissions</a>
-        <a href="#" class="bg-yellow-500 text-white px-4 py-2 rounded mx-1">Users</a>
-    </div>
+    @include('role-permission.nav')
     <div class="container mx-auto mt-6">
+       @include('role-permission.message')
         <div class="row">
             <div class="col-md-12">
                 <div class="bg-white shadow-md rounded mt-3">
@@ -41,8 +38,12 @@
 
                                             {{-- Lien pour supprimer la permission --}}
                                
-                                             <a href="{{ url('permissions/'.$permission->id. '/delete') }}" class="bg-red-500 text-white px-2 py-1 rounded mx-2">Delete</a>
+                                             <a href="{{ url('permissions/'.$permission->id. '/delete') }}"
+                                                 class="bg-red-500 text-white px-2 py-1 rounded mx-2"
+                                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');" 
+                                                 >Delete</a>
                                 
+                                                 
                                         </td>
                                     </tr>
                                 @endforeach
