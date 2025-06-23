@@ -29,7 +29,7 @@
                   @enderror
                   <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Permissions</label>
                   <div class="grid grid-cols-3 gap-4">
-                    {{-- Boucle pour afficher chaque permission avec une case à cocher --}}
+                    {{-- -Boucle pour afficher chaque permission avec une case à cocher --}}
                     @foreach ($permissions as $permission)
                     <div class="flex items-center">
                       <label class="flex items-center">
