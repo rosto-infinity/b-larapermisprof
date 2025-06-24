@@ -24,7 +24,7 @@ Route::get('roles/{roleId}/delete', [RoleController::class, 'destroy']);
  Route::get('roles/{roleId}/give-permissions', [RoleController::class, 'addPermissionToRole'])->name('roles.addPermissionToRole');
 Route::patch('roles/{roleId}/give-permissions', [RoleController::class, 'givePermissionToRole'])->name('give.addPermissionToRole');
 
-// resources pour users
+// -resources pour users
 Route::resource('users', UserController::class);
 // route pour delete user
 Route::get('users/{user}/delete', [UserController::class, 'destroy'])->name('users.destroy');
