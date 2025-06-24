@@ -31,24 +31,28 @@
                                         <td class="border-b">
 
                                             {{-- Lien pour éditer la permission --}}
-
+                                             @can('update permission')
                                             <a href="{{ url('permissions/' . $permission->id . '/edit') }}"
                                                 class="bg-green-500 text-white my-5 px-2 py-1 rounded">Edit</a>
-
+                                                @endcan
 
                                             {{-- Lien pour supprimer la permission --}}
-                               
+                                 @can('delete permission')
                                              <a href="{{ url('permissions/'.$permission->id. '/delete') }}"
                                                  class="bg-red-500 text-white px-2 py-1 rounded mx-2"
                                                 onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');" 
                                                  >Delete</a>
                                 
-                                                 
+                                         @endcan         
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
+                    </div>
+                    <div class="p-5">
+
+                        {{ $permissions->links() }}
                     </div>
                 </div>
             </div>

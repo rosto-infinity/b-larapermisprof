@@ -41,19 +41,21 @@
                                             </a>
 
                                             {{-- Lien pour éditer le rôle --}}
+                                              @can('update user')
                                             <a href="{{ url('roles/' . $role->id . '/edit') }}"
                                                 class="bg-green-500 text-white ml-3 my-5 px-2 py-1.5 rounded">
                                                 Edit
                                             </a>
-
+                                            @endcan
 
                                             {{-- Lien pour supprimer le rôle --}}
+                                            @can('delete user')
                                             <a href="{{ url('roles/' . $role->id . '/delete') }}"
                                               onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');"
                                                 class="bg-red-500 text-white px-2 py-1.5 rounded mx-2">
                                                 Delete
                                             </a>
-
+                                             @endcan
                                         </td>
                                     </tr>
                                 @endforeach

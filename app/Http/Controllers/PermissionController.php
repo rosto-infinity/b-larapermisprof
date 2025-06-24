@@ -3,17 +3,44 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\Middleware;
+use Spatie\Permission\Middleware\PermissionMiddleware;
 use Spatie\Permission\Models\Permission;
 
 class PermissionController extends Controller
 {
+    public static function middleware()
+    {
+        return [
+            new Middleware(
+                PermissionMiddleware::using('view permission'),
+                ['view']
+            ),
+            new Middleware(
+                PermissionMiddleware::using('create permission'),
+                ['create', 'store']
+            ),
+            new Middleware(
+                PermissionMiddleware::using('update permission'),
+                only: ['update', 'edit']
+            ),
+            new Middleware(
+                PermissionMiddleware::using('delete permission'),
+                ['destroy']
+            ),
+        ];
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-
-        $permissions = Permission::all();
+    $search = $request->input('search');
+        $permissions = Permission::when($search,
+         function ($query, $search) {
+            return $query->where('name', 'like', "%{$search}%");
+        })->paginate(5);
 
         return view('role-permission.permission.index-permission', compact('permissions'));
     }
